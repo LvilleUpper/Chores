@@ -10,17 +10,20 @@ function init(){
     console.log("Initialized");
 }
 
-function generate() {
+function generate(days) {
     //var array = document.getElementById('name_input').value.split(/[ ]*,[ ]*/);
     //var array =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59];
 
     //MANIFACTURE OFFSET
-    
+
     //6 groups of 5
-    var array =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56];
+    //var array =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56];
+    var array = ["Wilford", "Sammy", "Isreal", "Donny", "Clarence", "Ben", "Reuben", "Kenneth", "Stewart", "Dante", "Gayle", "Benton", "Bret", "Bob", "Brant", "Sergio", "Robert", "Calvin", "Emile", "Jamar", "Henry", "Mohammed", "Oren", "Thaddeus", "Harold", "Jim", "Joan", "Victor", "Hipolito", "Yong", "Eduardo", "Carmelo", "German", "Ernesto", "Augustus", "Tyson", "Denny", "Darnell", "Francisco", "Alfred", "Maynard", "Elisha", "Sang", "Chester", "Cedrick", "Michal", "Robt", "Filiberto", "Damian", "Pedro", "Jerald", "Lyndon", "Harris", "Glenn", "Clint", "Lyle", "Michael", "Barrett", "Modesto", "Leonel"];
+    array = shuffle(array);
     //console.log(array);
 
     /*
+    CONSTANT PAIR SOLUTION
     var groups = group(array,3);
     //index pointers
     var K = 0;var T = 1; var V = 2;
@@ -64,13 +67,23 @@ function generate() {
     //dynamic pair (experimental)
     teams = [];
     var groups = group(array,6);
+
+    if(groups[0].length == groups[5].length){
+        console.log("Divisible by 6: " + array.length);
+        groups[0][groups[0].length] = groups[1].splice(-1, 1);
+        console.log("Created artificial offset!");
+    }
+
     console.log(groups);
     //feeder arrays
 
     /*
-    var K1A = 0; var K2A = 1; 
-    var T1A = 2; var T2A = 3;
-    var V1A = 4; var V2A = 5;
+    K1: 0
+    K2: 1
+    T1: 2
+    T2: 3
+    V1: 4
+    V2: 5
     */
 
     var K1 = groups[0].concat(groups[4]).concat(groups[2]);
@@ -82,7 +95,7 @@ function generate() {
     var V2 = groups[5].concat(groups[1]).concat(groups[3]);
 
     var feeders = [K1,K2,T1,T2,V1,V2];
-    
+
     /*
     console.log(K1.length);
     console.log(K2.length);
@@ -94,7 +107,7 @@ function generate() {
     //counters K12 T12 V12
     var counters = [0,0,0,0,0,0];
 
-    for(var i =0; i<100; i++){
+    for(var i =0; i<days; i++){
         var team = {
             k1: K1[counters[0]],
             k2: K2[counters[1]],
@@ -115,18 +128,8 @@ function generate() {
 
         teams[teams.length] = team;
     }
-
     console.log(teams);
 }
-
-
-
-//if we are at end of K, new K is T
-//if we are at end of T, new T is V
-//if we are at end of V, new V is K
-
-
-
 
 //splits up an array of names into N semi-equal groups (largest groups will be 1 greater than the others)
 function group(names,n){
