@@ -56,6 +56,7 @@ function generate(days) {
         var formattedDate = d.getMonth() + "/" + d.getDate();
         var team = {
             date: formattedDate,
+            year: (d.getYear()+1900),
             k1: K1[counters[0]],
             k2: K2[counters[1]],
             t1: T1[counters[2]],
