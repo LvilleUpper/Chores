@@ -54,13 +54,18 @@ app.post('/', (request, response) => {
     //process JSON data into array
     for(var i=0; i< array.length; i++){
         var obj = array[i];
-        var ds = obj.date + "/" + obj.year;
-        var dateObj = dateFormat(ds, "yyyy-mm-dd");
-        console.log(dateObj);
+        var dateObj = dateFormat(obj.date, "yyyy-mm-dd");
         values[values.length] = [dateObj,obj.k1,obj.k2,obj.t1,obj.t2,obj.v1,obj.v2];
     }
     console.log(values);
 
+    connection.query("TRUNCATE schedule", function(err) {
+        if (err){
+            console.log(err);
+        }
+        connection.end();
+    });
+    
     connection.query(sql, [values], function(err) {
         if (err){
             console.log(err);
@@ -69,10 +74,6 @@ app.post('/', (request, response) => {
     });
 
     response.send(array[5].name);
-    /*
-    var obj = JSON.parse(str);
-    response.send(obj["key"]);
-    response.end("\nBye!");*/
 })
 
 app.listen(8081, (err) => {  

@@ -51,12 +51,11 @@ function generate(days) {
 
 
     /*start?*/
-    var d = new Date(2017, 4, 1);
+    var d = moment('2017-04-01'); 
     for(var i =0; i<days; i++){
-        var formattedDate = d.getMonth() + "/" + d.getDate();
+        var formattedDate = (d.month() + 1) + "/" + d.date() + "/" +d.year();
         var team = {
             date: formattedDate,
-            year: (d.getYear()+1900),
             k1: K1[counters[0]],
             k2: K2[counters[1]],
             t1: T1[counters[2]],
@@ -64,7 +63,7 @@ function generate(days) {
             v1: V1[counters[4]],
             v2: V2[counters[5]]
         };
-        d.setDate(d.getDate() + 1);
+        d.add(1, 'day'); 
         //console.log("K: {" + team.k1 + ", " + team.k2 + "} T: {" + team.t1 + ", " + team.t2+"} V: {" + team.v1 + ", " + team.v2 + "}");
         for(var j=0;j<counters.length;j++){
             counters[j]++;
@@ -109,6 +108,7 @@ function uploadSuccess(){
 function display(teams){
     console.log("Displaying");
     var myTableDiv = document.getElementById("schedule-container");
+    $('#schedule-container').empty(); //clear table
     var table = document.createElement('TABLE');
     table.className = "custom-table";
     var tableBody = document.createElement('TBODY');
