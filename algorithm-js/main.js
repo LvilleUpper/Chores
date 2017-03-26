@@ -7,7 +7,7 @@ $.ajax({
 ,   contentType: 'application/json'
 ,   data: JSON.stringify(postData) //stringify is important
 ,   success: _madeSave.bind(this)
-});
+});jjj
 */
 
 function generate(days) {
