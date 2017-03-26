@@ -878,11 +878,12 @@ dl dd {
 
 .custom-table tbody tr td:nth-child(1) {
     background-color: rgba(255, 255, 255, 0.075);
+    text-align: center;
 }
 .custom-table tbody tr td:nth-child(4) {
     background-color: rgba(255, 255, 255, 0.075);
 }
-.custom-table tbody tr td:nth-child(5) {60rem
+.custom-table tbody tr td:nth-child(5) {
     background-color: rgba(255, 255, 255, 0.075);
 }
 
@@ -904,14 +905,16 @@ background-color: rgba(255, 255, 255, 0.075);
 */
 
 table td {
-    padding: 0.75em 0.75em;
+    /*padding: 0.75em 0.75em;*/
+    padding: 0.6em 0.6em;
 }
 
 table th {
     color: #ffffff;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 600;
-    padding: 0 0.75em 0.75em 0.75em;
+    /*originally 0 0.75 0.75 0.75*/
+    padding: 0.6em 0.6em 0.6em 0.6em;
     text-align: left;
 }
 
@@ -1314,7 +1317,7 @@ body.is-loading #bg:before {
     min-width: 7.5rem;
     height: 2.75rem;
     line-height: 2.75rem;
-    padding: 0 1.25rem 0 1.45rem;
+    /*padding: 0 1.25rem 0 1.45rem;*/
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
@@ -1497,7 +1500,8 @@ body.is-loading #header .content .inner {
     transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
     padding: 4.5rem 2.5rem 1.5rem 2.5rem ;
     position: relative;
-    width: 60rem;
+    /* window width */
+    width: 55rem;
     max-width: 100%;
     background-color: rgba(27, 31, 34, 0.85);
     border-radius: 4px;

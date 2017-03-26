@@ -17,7 +17,7 @@ function generate(days) {
     //var array =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56];
     var array = ["Wilford", "Sammy", "Isreal", "Donny", "Clarence", "Ben", "Reuben", "Kenneth", "Stewart", "Dante", "Gayle", "Benton", "Bret", "Bob", "Brant", "Sergio", "Robert", "Calvin", "Emile", "Jamar", "Henry", "Mohammed", "Oren", "Thaddeus", "Harold", "Jim", "Joan", "Victor", "Hipolito", "Yong", "Eduardo", "Carmelo", "German", "Ernesto", "Augustus", "Tyson", "Denny", "Darnell", "Francisco", "Alfred", "Maynard", "Elisha", "Sang", "Chester", "Cedrick", "Michal", "Robt", "Filiberto", "Damian", "Pedro", "Jerald", "Lyndon", "Harris", "Glenn", "Clint", "Lyle", "Michael", "Barrett", "Modesto", "Leonel"];
     array = shuffle(array);
-    console.log(array);
+    //console.log(array);
 
     //dynamic pair (experimental)
     teams = [];
@@ -27,7 +27,7 @@ function generate(days) {
         groups[0][groups[0].length] = groups[1].splice(-1, 1);
         console.log("Created artificial offset!");
     }
-    console.log(groups);
+    //console.log(groups);
     //feeder arrays
     /*
     K1: 0
@@ -49,9 +49,13 @@ function generate(days) {
     //counters K12 T12 V12
     var counters = [0,0,0,0,0,0];
 
+
+    /*start?*/
+    var d = new Date(2017, 4, 1);
     for(var i =0; i<days; i++){
+        var formattedDate = d.getMonth() + "/" + d.getDate();
         var team = {
-            date: i,
+            date: formattedDate,
             k1: K1[counters[0]],
             k2: K2[counters[1]],
             t1: T1[counters[2]],
@@ -59,6 +63,7 @@ function generate(days) {
             v1: V1[counters[4]],
             v2: V2[counters[5]]
         };
+        d.setDate(d.getDate() + 1);
         //console.log("K: {" + team.k1 + ", " + team.k2 + "} T: {" + team.t1 + ", " + team.t2+"} V: {" + team.v1 + ", " + team.v2 + "}");
         for(var j=0;j<counters.length;j++){
             counters[j]++;
@@ -84,6 +89,22 @@ function enable(){
     $('#upload-button').css("color","white !important;");
 }
 
+function upload(){
+    console.log("Uploading");
+    //use the cached generated teams
+    $.ajax({
+        url: "http://localhost:8081",
+        type: 'POST',   
+        contentType: 'application/json',  
+        data: JSON.stringify(generated), //stringify is important,   
+        success: uploadSuccess()
+    });
+}
+
+function uploadSuccess(){
+    console.log("Successful upload!");
+}
+
 function display(teams){
     console.log("Displaying");
     var myTableDiv = document.getElementById("schedule-container");
@@ -92,18 +113,18 @@ function display(teams){
     var tableBody = document.createElement('TBODY');
     table.border = '1';
     table.appendChild(tableBody);
-    
+
     var heading = ["Kitchen", "Trash","Vacuum"];
-    
+
     //add headers!
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
-    
+
     var th = document.createElement('TH')
-        th.setAttribute("colspan","1");
-        th.appendChild(document.createTextNode("Date"));
-        th.style.textAlign = "center";
-        tr.appendChild(th);
+    th.setAttribute("colspan","1");
+    th.appendChild(document.createTextNode("Date"));
+    th.style.textAlign = "center";
+    tr.appendChild(th);
     for (i = 0; i < heading.length; i++) {
         var th = document.createElement('TH')
         th.setAttribute("colspan","2");
@@ -115,7 +136,6 @@ function display(teams){
     //TABLE ROWS
     for (i = 0; i < teams.length; i++) {
         var tr = document.createElement('TR'); //generate a row
-        console.log(teams[i]);
         for (var key in teams[i]) {
             if (teams[i].hasOwnProperty(key)) {
                 var td = document.createElement('TD');
@@ -133,7 +153,7 @@ function group(names,n){
     var extra = names.length % n;
     var minSize = (names.length - extra)/n;
 
-    console.log(minSize + " : " + extra);
+    //console.log(minSize + " : " + extra);
     //names = shuffle(names);
     var groups = [];
     for(var i=0; i<n; i++){
@@ -158,7 +178,7 @@ function group(names,n){
         groups[pointer][end] = names[i];
         cap--;
     }
-    console.log("Split into " + n);
+    //console.log("Split into " + n);
     return groups;
 }
 

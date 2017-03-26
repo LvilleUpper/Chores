@@ -1,0 +1,22 @@
+{
+  "name": "scheduler-server",
+  "version": "1.0.0",
+  "description": "A server for the Upper Chore scheduler web-app.",
+  "main": "/Users/michaelzman/Desktop/PROGRAMMIN\\'/Web\\ Projects/Upper\\ Chores/algorithm-js/server.js ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LvilleUpper/Chores.git"
+  },
+  "author": "Michael Man",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LvilleUpper/Chores/issues"
+  },
+  "homepage": "https://github.com/LvilleUpper/Chores#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
