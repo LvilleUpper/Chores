@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26836,        702]
-NotebookOptionsPosition[     25547,        651]
-NotebookOutlinePosition[     25903,        667]
-CellTagsIndexPosition[     25860,        664]
+NotebookDataLength[     25887,        676]
+NotebookOptionsPosition[     24598,        625]
+NotebookOutlinePosition[     24954,        641]
+CellTagsIndexPosition[     24911,        638]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -541,38 +541,8 @@ Cell[BoxData[{
               ",", "\"\<-\>\"", ",", "\"\<-\>\""}], "}"}]}], "]"}], ";"}], 
         "\[IndentingNewLine]", ",", 
         RowBox[{"{", 
-         RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}], ";", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"Do", "[", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"If", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Mod", "[", 
-               RowBox[{
-                RowBox[{"i", "-", "1"}], ",", "6"}], "]"}], "\[Equal]", "0"}],
-              ",", 
-             RowBox[{"AppendTo", "[", 
-              RowBox[{"out", ",", 
-               RowBox[{"{", "}"}]}], "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{
-             RowBox[{"out", "[", 
-              RowBox[{"[", 
-               RowBox[{"-", "1"}], "]"}], "]"}], ",", 
-             RowBox[{"l", "[", 
-              RowBox[{"[", 
-               RowBox[{"i", ",", "1"}], "]"}], "]"}]}], "]"}], ";"}], 
-          "\[IndentingNewLine]", ",", 
-          RowBox[{"{", 
-           RowBox[{"i", ",", "1", ",", 
-            RowBox[{"Length", "[", "l", "]"}]}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", 
-        RowBox[{"out", "//", "TableForm"}]}], "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"i", ",", "1", ",", "rows"}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"Do", "[", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{
@@ -612,7 +582,8 @@ Cell[BoxData[{
    3.699388200933146*^9, 3.699388202667377*^9}, 3.699388315985207*^9, {
    3.6993883654704638`*^9, 3.699388383944466*^9}, 3.699388458332509*^9, {
    3.699388695324024*^9, 3.699388696202341*^9}, 3.699388732629315*^9, {
-   3.699388941924041*^9, 3.699388947545878*^9}, 3.699388984186141*^9}],
+   3.699388941924041*^9, 3.699388947545878*^9}, 3.699388984186141*^9, {
+   3.699391515665361*^9, 3.699391530002323*^9}}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -625,7 +596,9 @@ Cell[BoxData[
     {"\<\"goblin\"\>", "\<\"expedite\"\>", "\<\"phylactery\"\>", \
 "\<\"pee\"\>", "\<\"supervise\"\>", "\<\"ineptness\"\>"},
     {"\<\"easygoing\"\>", "\<\"orthogonal\"\>", "\<\"acetaminophen\"\>", \
-"\<\"buttermilk\"\>", "\<\"unabated\"\>", "\<\"contaminant\"\>"}
+"\<\"buttermilk\"\>", "\<\"unabated\"\>", "\<\"contaminant\"\>"},
+    {"\<\"-\"\>", "\<\"-\"\>", "\<\"-\"\>", "\<\"-\"\>", "\<\"-\"\>", \
+"\<\"-\"\>"}
    },
    GridBoxAlignment->{
     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
@@ -643,7 +616,8 @@ Cell[BoxData[
    3.699387981835847*^9, 3.6993882032681093`*^9, 3.699388316460401*^9, {
    3.6993883682911463`*^9, 3.699388385224429*^9}, 3.6993884587746677`*^9, 
    3.699388617877453*^9, 3.6993886968066807`*^9, 3.699388733039742*^9, 
-   3.699388933114242*^9, 3.6993889847911043`*^9}]
+   3.699388933114242*^9, 3.6993889847911043`*^9, {3.699391526752542*^9, 
+   3.699391531213526*^9}}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -698,8 +672,8 @@ Cell[19802, 504, 121, 1, 30, "Text"]
 Cell[CellGroupData[{
 Cell[19960, 510, 129, 1, 29, "Subsubsection"],
 Cell[CellGroupData[{
-Cell[20114, 515, 3874, 99, 390, "Input"],
-Cell[23991, 616, 1504, 29, 114, "Output"]
+Cell[20114, 515, 2789, 70, 264, "Input"],
+Cell[22906, 587, 1640, 32, 130, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

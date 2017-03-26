@@ -22,7 +22,7 @@ function generate(days) {
     //dynamic pair (experimental)
     teams = [];
     var groups = group(array,6);
-    if(groups[0].length == groups[5].length){
+    if(groups[0].length == groups[5].length){ 
         console.log("Divisible by 6: " + array.length);
         groups[0][groups[0].length] = groups[1].splice(-1, 1);
         console.log("Created artificial offset!");
