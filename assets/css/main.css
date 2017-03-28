@@ -283,7 +283,7 @@ hr {
 /* Form */
 
 form {
-    margin: 0 0 2.5rem 0;
+    /*margin: 0 0 2.5rem 0;*/
 }
 
 form .field {
@@ -432,11 +432,19 @@ select option {
     display: none;
 }
 
+.date_select{
+    height: 2rem !important;
+    width: 6.4em !important;
+    padding: 0 0.7rem !important;
+    font-size: 13px !important;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
 select {
     height: 2.75rem;
+    width: 7em;
 }
 
 textarea {
@@ -955,7 +963,7 @@ table.alt tfoot {
 /* Button */
 #upload-button{
     color:white !important;
-    box-shadow: inset 0 0 0 1px green;
+    box-shadow: none;
 }
 
 #upload-button:disabled{

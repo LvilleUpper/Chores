@@ -26,7 +26,7 @@ app.post('/', function(req, response){
 // Add headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:58764');
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:64338');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -42,8 +42,23 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/', (request, response) => {  
-    response.send('Hello getter!');
+app.get('/', (request, response) => { 
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    console.log('Hello getter! It is currently: ' + month);
+    var query = "SELECT * from schedule where MONTH(date) = "+month+" ORDER BY DATE ASC";
+
+    connection.query(query, function(err,rows) {
+        if (err){
+            console.log(err);
+            connection.end();
+            response.send("ERROR");
+            return;
+        }
+        //returns the rows in this month
+        console.log(rows);
+        response.send(rows);
+    });
 })
 
 app.post('/', (request, response) => {  
@@ -57,23 +72,28 @@ app.post('/', (request, response) => {
         var dateObj = dateFormat(obj.date, "yyyy-mm-dd");
         values[values.length] = [dateObj,obj.k1,obj.k2,obj.t1,obj.t2,obj.v1,obj.v2];
     }
-    console.log(values);
+    //console.log(values);
 
     connection.query("TRUNCATE schedule", function(err) {
         if (err){
             console.log(err);
+            connection.end();
+            response.send("ERROR");
+            return;
         }
-        connection.end();
     });
     
-    connection.query(sql, [values], function(err) {
+    connection.query(sql, [values], function(err,rows) {
         if (err){
             console.log(err);
+            connection.end();
+            response.send("ERROR");
+            return;
         }
-        connection.end();
+        //returns results and how many rows changed
+        console.log(rows);
     });
-
-    response.send(array[5].name);
+    response.send("OK");
 })
 
 app.listen(8081, (err) => {  

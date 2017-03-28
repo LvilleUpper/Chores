@@ -6,10 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Dimension by HTML5 UP</title>
+		<title>Upper Chore Scheduler</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
@@ -48,6 +49,7 @@
 								<h2 class="major">This Month</h2> <!-- ADD PHP -->
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p>Here is this month's chore schedule.</p>
+                                <div id="schedule-container-month"></div>
 							</article>
 
 						<!-- About -->
@@ -70,18 +72,26 @@
 								<form method="post" action="#">
 									<div class="field">
 										<label for="message">Names (separated with commas)</label>
-										<textarea name="message" id="message" rows="4"></textarea>
+										<textarea name="names" id="name_input" rows="4"></textarea>
 									</div>
 									<ul class="actions">
 										<li><input type="button" value="Generate" class="special" onclick="generate(100)"/></li>
                                         <li><input type="button" value="Upload" class="special" disabled="true" onclick="upload()" id="upload-button"/></li>
-
+                                        <br><br>
+                                        <li><p>Year Start<input type="text" id="year_s" class="date_select"></p></li>
+                                        <li><p>TG Start<input type="text" id="thanks_s" class="date_select"></p></li>
+                                        <li><p>TG End<input type="text" id="thanks_e" class="date_select"></p></li>
+                                        <li><p>Winter Start<input type="text" id="winter_s" class="date_select"></p></li>
+                                        <li><p>Winter End<input type="text" id="winter_e" class="date_select"></p></li>
+                                        <li><p>Spring Start<input type="text" id="spring_s" class="date_select"></p></li>
+                                        <li><p>Spring End<input type="text" id="spring_e" class="date_select"></p></li>
+                                        <li><p>Year End<input type="text" id="year_e" class="date_select"></p></li>
 									</ul>
                                     
                                     <!-- TODO: Put date/break options here! -->
 								</form>
                                 
-                                <div id="schedule-container"></div>
+                                <div id="schedule-container-admin"></div>
                                 
 							</article>
 
@@ -341,10 +351,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
             <script src="/algorithm-js/main.js"></script>
-        <script src="/algorithm-js/moment.js"></script>
+            <script src="/algorithm-js/moment.js"></script>
 	</body>
 </html>
