@@ -1,3 +1,4 @@
+//PDF AND CSV DOWNLOADING
 
 function downloadCSV() {
     var objArray = generated;
@@ -49,7 +50,7 @@ function downloadPDF(){
         margin: {top: 60},
         addPageContent: function(data) {
             doc.setFontSize(20);
-            doc.text($("#month-title").text(), 43, 50);
+            doc.text($("#month-title").text(), 40, 50);
         }
     });
     
