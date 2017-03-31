@@ -27,7 +27,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Upper Chore Scheduler</h1>
-								<p>A web-app for the Men of Upper House<br />Designed by Michael Man and Max Drojin '17</p>
+								<p>A web-app for the Men of Upper House<br />Coded by Michael Man '17</p>
 							</div>
 						</div>
 						<nav>
@@ -46,9 +46,8 @@
 
 						<!-- This Month -->
 							<article id="month"> 
-								<h2 class="major">This Month</h2> <!-- ADD PHP -->
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Here is this month's chore schedule.</p>
+								<h2 id="month-title" class="major" style="margin-bottom: 3vh; display:inline-block; border-bottom:solid 3px #ffffff;">April Chore Schedule</h2> <!-- ADD PHP -->
+                                <input type="button" value="Download PDF" class="special" onclick="downloadPDF()" disabled="true" id="pdf-button"/>
                                 <div id="schedule-container-month"></div>
 							</article>
 
@@ -76,7 +75,8 @@
 									</div>
 									<ul class="actions">
 										<li><input type="button" value="Generate" class="special" onclick="generate(100)"/></li>
-                                        <li><input type="button" value="Upload" class="special" disabled="true" onclick="upload()" id="upload-button"/></li>
+                                        <li><input type="button" value="Upload" class="special" disabled="true" onclick="upload()" id="upload-button"/>
+                                        <li><input type="button" value="Download CSV" class="special" disabled="true" onclick="DownloadCSV()" id="csv-button"/></li>
                                         <br><br>
                                         <li><p>Year Start<input type="text" id="year_s" class="date_select"></p></li>
                                         <li><p>TG Start<input type="text" id="thanks_s" class="date_select"></p></li>
@@ -351,10 +351,14 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
-          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+            <script src="assets/js/html2pdf.js"></script>
+            <script src="assets/js/jspdf.debug.js"></script>
+            <script src="assets/js/jspdf.plugin.autotable.min.js"></script>
+            <script src="/algorithm-js/io.js"></script>
             <script src="/algorithm-js/main.js"></script>
             <script src="/algorithm-js/moment.js"></script>
 	</body>

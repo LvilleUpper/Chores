@@ -970,6 +970,21 @@ table.alt tfoot {
     color:#1b1f22 !important;
 }
 
+#csv-button{
+    box-shadow: none;
+    color:white !important;
+}
+
+#csv-button:disabled{
+    color:#1b1f22 !important;
+}
+
+#pdf-button{
+    margin-bottom: 3vh;
+    display: inline-block;
+    float:right;
+}
+
 input[type="submit"],
 input[type="reset"],
 input[type="button"],

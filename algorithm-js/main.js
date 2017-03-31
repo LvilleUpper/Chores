@@ -105,7 +105,6 @@ function generate(days) {
     }
     generated = teams;
     enable();
-    //console.log(teams);
     display(teams,"schedule-container-admin");
     //console.log(ConvertToCSV(JSON.stringify(teams)));
 }
@@ -138,15 +137,18 @@ function enable(){
     $('#upload-button').css("background-color","green");
     var lastStyle = $('style').last();
     $('#upload-button').val("Upload");
-    lastStyle.html(lastStyle.html() + '\n#upload-button { color:red !important; }');
     $('#upload-button').css("color","white !important;");
+
+    $('#csv-button').prop('disabled', false);
+    $('#csv-button').css("background-color","green");
+    $('#csv-button').css("color","white !important;");
 }
 
 //disables the button after the data is uploaded
 function disable(){
     $('#upload-button').prop('disabled', true);
     var lastStyle = $('style').last();
-    $('#upload-button').val("Uploaded!");
+    $('#upload-button').val("Uploaded");
     lastStyle.html(lastStyle.html() + '\n#upload-button { color:red !important; }');
     $('#upload-button').css("color","white !important;");
 }
@@ -177,35 +179,28 @@ function download(){
     }); 
 }
 
-function ConvertToCSV(objArray) {
-    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    var str = '';
-
-    for (var i = 0; i < array.length; i++) {
-        var line = '';
-        for (var index in array[i]) {
-            if (line != '') line += ','
-
-            line += array[i][index];
-        }
-
-        str += line + '\r\n';
-    }
-
-    return str;
-}
-
 function uploadSuccess(){
     console.log("Successful upload!");
     disable();
 }
 
-
 function downloadSuccess(data){
     console.log("Successful download!");
+    $('#pdf-button').prop('disabled', false);
     //console.log(data);
     display(data,"schedule-container-month");
 }
+
+Date.prototype.monthNames = [
+    "January", "February", "March",
+    "April", "May", "June",
+    "July", "August", "September",
+    "October", "November", "December"
+];
+
+Date.prototype.getMonthName = function() {
+    return this.monthNames[this.getMonth()];
+};
 
 function display(teams, loc){
     console.log("Displaying at : " + loc);
@@ -213,11 +208,20 @@ function display(teams, loc){
     $("#" + loc).empty(); //clear table
     var table = document.createElement('TABLE');
     table.className = "custom-table";
+
+    var month;
+    if(loc == "schedule-container-month"){
+        table.id = "month-schedule";
+        var date = new Date(teams[2].date + " 00:00:00");
+        month = date.getMonthName();
+        $("#month-title").text(month + " Chore Schedule");
+    }
+
     var tableBody = document.createElement('TBODY');
     table.border = '1';
     table.appendChild(tableBody);
 
-    var heading = ["Kitchen", "Trash","Vacuum"];
+    var heading = ["Kitchen","", "Trash","","Vacuum",""];
 
     //add headers!
     var tr = document.createElement('TR');
@@ -230,9 +234,9 @@ function display(teams, loc){
     tr.appendChild(th);
     for (i = 0; i < heading.length; i++) {
         var th = document.createElement('TH')
-        th.setAttribute("colspan","2");
+        th.setAttribute("colspan","1");
         th.appendChild(document.createTextNode(heading[i]));
-        th.style.textAlign = "center";
+        th.style.textAlign = "left";
         tr.appendChild(th);
     }
 
